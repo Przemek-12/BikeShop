@@ -40,6 +40,7 @@ public class HibernateConfiguration {
 	private String dialect;
 	
 	
+	//A factory for connections to the physical data source that this DataSource object represents. 
 	@Bean
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource(url,username,password);
@@ -58,6 +59,9 @@ public class HibernateConfiguration {
 	}
 	
 	
+	//FactoryBean that creates a Hibernate SessionFactory. 
+	//This is the usual way to set up a shared Hibernate SessionFactory in a Spring 
+	//application context; the SessionFactory can then be passed to data access objects via dependency injection.
 	@Bean
 	@Primary
 	public LocalSessionFactoryBean getSessionFactory() {
@@ -69,6 +73,9 @@ public class HibernateConfiguration {
 	}
 	
 	
+	//Binds a Hibernate Session from the specified factory to the thread, potentially allowing for one thread-bound Session per factory. 
+	//SessionFactory.getCurrentSession() is required for Hibernate access code that needs to support this transaction handling mechanism, 
+	//with the SessionFactory being configured with SpringSessionContext.
 	@Bean
 	@Autowired
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
@@ -78,6 +85,8 @@ public class HibernateConfiguration {
 	}
 	
 	
+	//Spring container creates the objects, wire them together, configure them, and manage their complete life cycle from creation till destruction. 
+	//to use entity class objects, EntityManager must be set up first
 	@Bean(name="entityManagerFactory")
 	public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
 	    LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();

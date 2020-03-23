@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/basicStyles.css">
-	<link rel="stylesheet" href="css/bikeElementPageStyles.css">
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-	<script src="js/bikeElementPageJS.js"></script>
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/basicStyles.css">
+<link rel="stylesheet" href="css/bikeElementPageStyles.css">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+	rel="stylesheet">
+<script src="js/bikeElementPageJS.js"></script>
+<title>Insert title here</title>
 </head>
 <body>
 
 	<nav>
 		<a id="mainPageBtn" href="/mainPage">MainPage</a>
 	</nav>
-	
+
 	<section id="section1">
-	
+
 		<form th:object="${bikeElement}" method="POST">
 
 			<div class="product" th:each="element: ${elementList}">
-				
+
 				<div class="model" th:text="${element.model}"></div>
 				<div class="price" th:text="${element.price}"></div>
-				<div class="image" th:style=" 'background: url(graphics/' +${elementString}+ '/' +${element.imgPath}+ '.jpg); background-size:100% 100%;background-position: center;' "></div>
-				
-				
-				<input class="checkboxInput" id="${element.model}" type="checkbox" name="elementId" th:value="${element.elementId}">
+				<div class="image"
+					th:style=" 'background: url(graphics/' +${elementString}+ '/' +${element.imgPath}+ '.jpg); background-size:100% 100%;background-position: center;' "></div>
+
+
+				<input class="checkboxInput" id="${element.model}" type="checkbox"
+					name="elementId" th:value="${element.elementId}">
 				<div class="newCheckbox">SELECTED</div>
-				
-			
+
+
 			</div>
-			
+
 			<input id="submitBtn" type="submit" th:value="${nextLocationText}">
 		</form>
-		
+
 	</section>
-	
+
 </body>
 </html>

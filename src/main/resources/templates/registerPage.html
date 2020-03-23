@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/basicStyles.css">
-	<link rel="stylesheet" href="css/loginRegisterPageStyles.css">
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/basicStyles.css">
+<link rel="stylesheet" href="css/loginRegisterPageStyles.css">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+	rel="stylesheet">
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -14,29 +15,32 @@
 	<nav>
 		<a id="mainPageBtn" href="/mainPage">MainPage</a>
 	</nav>
-	
+
 	<section id="section1">
-	
+
 		<div id="formArea">
 			<form th:object="${registerUser}" method="POST">
 				<input name="username" th:field="*{username}" placeholder="Username">
-				<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+				<div th:if="${#fields.hasErrors('username')}"
+					th:errors="*{username}"></div>
 				<div th:if="${userIsTaken}==true">Username is already taken.</div>
-				
+
 				<input name="password" th:field="*{password}" placeholder="Password">
-				<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
-				
+				<div th:if="${#fields.hasErrors('password')}"
+					th:errors="*{password}"></div>
+
 				<input name="email" th:field="*{email}" placeholder="Email">
 				<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 				<div th:if="${emailIsTaken}==true">Email is already taken.</div>
-				
-				<input class="inputBtn"  type="submit" value="Create Account">
+
+				<input class="inputBtn" type="submit" value="Create Account">
 			</form>
-			<button class="logRegBtn" id="loginPageBtn" th:onclick="window.location.href='/loginPage'">Login</button>
+			<button class="logRegBtn" id="loginPageBtn"
+				th:onclick="window.location.href='/loginPage'">Login</button>
 		</div>
-		
-		
+
+
 	</section>
-	
+
 </body>
 </html>

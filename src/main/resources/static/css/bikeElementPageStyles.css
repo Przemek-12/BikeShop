@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
-#section1{
+#section1 {
 	display: flex;
 	width: 100%;
 	height: 100vh;
 	font-size: 1vw;
 }
 
-form{
+form {
 	padding: 3%;
 	display: flex;
 	width: 100%;
@@ -23,19 +23,18 @@ form{
 }
 
 ::-webkit-scrollbar-track {
-	background-color: #72737571; 
+	background-color: #72737571;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #888; 
+	background: #888;
 }
-  
+
 ::-webkit-scrollbar-thumb:hover {
-	background: rgb(230, 230, 230); 
+	background: rgb(230, 230, 230);
 }
 
-
-.product{
+.product {
 	position: relative;
 	width: 25%;
 	height: 45%;
@@ -48,17 +47,17 @@ form{
 	margin: 3%;
 }
 
-.product:hover{
+.product:hover {
 	width: 26%;
 	height: 46%;
 }
 
-.product:active{
+.product:active {
 	width: 24%;
 	height: 44%;
 }
 
-.model{
+.model {
 	position: relative;
 	width: 100%;
 	height: 10%;
@@ -66,7 +65,7 @@ form{
 	z-index: 1;
 }
 
-.price{
+.price {
 	position: relative;
 	width: 100%;
 	height: 10%;
@@ -74,22 +73,20 @@ form{
 	z-index: 1;
 }
 
-.image{
+.image {
 	position: relative;
 	width: 100%;
 	height: 80%;
 	z-index: 2;
 }
 
-
-
-.checkboxContainer{
+.checkboxContainer {
 	position: absolute;
 	width: 100%;
 	height: 5%;
 }
 
-.checkboxInput{
+.checkboxInput {
 	position: absolute;
 	top: 0%;
 	width: 100%;
@@ -99,12 +96,11 @@ form{
 	cursor: pointer;
 }
 
-.checkboxInput:checked +.newCheckbox{
+.checkboxInput:checked+.newCheckbox {
 	display: block;
 }
 
-
-.newCheckbox{
+.newCheckbox {
 	position: absolute;
 	width: 100%;
 	height: 5%;
@@ -115,10 +111,8 @@ form{
 	text-align: center;
 }
 
-
-#submitBtn{
-	position: fixed;
-	border: 2px solid white;
+#submitBtn {
+	position: fixed; border : 2px solid white;
 	background-color: rgb(197, 127, 69);
 	width: 10%;
 	height: 8%;
@@ -128,56 +122,31 @@ form{
 	right: 0.5%;
 	bottom: 0;
 	cursor: pointer;
+	border: 2px solid white;
 }
 
-#submitBtn:hover{
+#submitBtn:hover {
 	background-color: rgb(206, 176, 151);
 }
-#submitBtn:active{
+
+#submitBtn:active {
 	background-color: rgb(212, 115, 36);
 }
 
-
-
-@media screen and (max-width: 600px){
-
-	form{
+@media screen and (max-width: 600px) {
+	form {
 		display: block;
 	}
-	.product{
+	.product {
 		width: 100%;
 		height: 50%;
 	}
-	.product:hover{
+	.product:hover {
 		width: 100%;
 		height: 50%;
 	}
-
-	.product:active{
+	.product:active {
 		width: 100%;
 		height: 50%;
 	}
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

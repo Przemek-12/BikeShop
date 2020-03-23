@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude=HibernateJpaAutoConfiguration.class)
+	//contains:
+	//@SpringBootConfiguration - configuration class, specialized form of Configuration annotation
+	//@EnableAutoConfiguration - automatically switches on Spring Boot configuration
+	//@ComponentScan - scan for components, classes with annotations @Component, @Controller, @Service
 @ComponentScan(basePackages="com.example.demo")
 @EntityScan(basePackages="com.example.demo.user")
 public class BootDemoApplication {

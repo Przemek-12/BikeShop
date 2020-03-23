@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#section1{
+#section1 {
 	display: flex;
 	width: 100vw;
 	height: 100vh;
@@ -12,22 +12,21 @@
 	font-size: 1vw;
 }
 
-div{
-	color:white;
+div {
+	color: white;
 }
 
-
-form{
+form {
 	border: 1px solid white;
 	width: 60%;
-	height:60%;
+	height: 60%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
 }
 
-#submitBtn{
+#submitBtn {
 	border: 2px solid white;
 	background-color: rgb(197, 127, 69);
 	width: 30%;
@@ -36,17 +35,15 @@ form{
 	color: white;
 }
 
-#submitBtn:hover{
+#submitBtn:hover {
 	background-color: rgb(206, 176, 151);
 }
-#submitBtn:active{
+
+#submitBtn:active {
 	background-color: rgb(212, 115, 36);
 }
 
-
-
-
-.orderList{
+.orderList {
 	border: 1px solid white;
 	width: 30%;
 	height: 60%;
@@ -61,26 +58,23 @@ form{
 }
 
 ::-webkit-scrollbar-track {
-	background-color: #72737571; 
+	background-color: #72737571;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #888; 
+	background: #888;
 }
-  
+
 ::-webkit-scrollbar-thumb:hover {
-	background: rgb(230, 230, 230); 
+	background: rgb(230, 230, 230);
 }
 
-
-
-.orderListElement{
+.orderListElement {
 	height: 15vh;
 	width: 100%;
 }
 
-
-.orderListElement form{
+.orderListElement form {
 	display: flex;
 	flex-direction: row;
 	height: 100%;
@@ -89,8 +83,7 @@ form{
 	justify-content: space-around;
 }
 
-
-#deleteBtn{
+#deleteBtn {
 	height: 30%;
 	width: 15%;
 	border: 1px solid white;
@@ -98,9 +91,11 @@ form{
 	font-size: 1vw;
 	color: white;
 }
-#deleteBtn:hover{
+
+#deleteBtn:hover {
 	background-color: rgb(111, 132, 155);
 }
-#deleteBtn:active{
+
+#deleteBtn:active {
 	background-color: rgb(14, 49, 88);
 }

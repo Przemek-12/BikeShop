@@ -1,96 +1,71 @@
 @charset "UTF-8";
 
-*{
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    letter-spacing: 1px;
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-    font-family: 'Ubuntu', sans-serif;
-    word-wrap: break-word;
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	letter-spacing: 1px;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	font-family: 'Ubuntu', sans-serif;
+	word-wrap: break-word;
 }
 
-*:focus{
-    outline: none;
+*:focus {
+	outline: none;
 }
 
-body{
+body {
 	background-color: black;
 }
 
-nav{
-    position: fixed;
-    display: flex;
-    width: 100vw;
-    height: 5vh;
-    z-index: 99;
-    
-    font-size: 1vw;
-    
-    align-items: center;
-    justify-content: space-around;
-    text-transform: uppercase;
-
-    transition: background-color 0.5s, font-size 0.5s;
+nav {
+	position: fixed;
+	display: flex;
+	width: 100vw;
+	height: 5vh;
+	z-index: 99;
+	font-size: 1vw;
+	align-items: center;
+	justify-content: space-around;
+	text-transform: uppercase;
+	transition: background-color 0.5s, font-size 0.5s;
 }
 
-nav:hover{
-    background-color: rgba(192, 191, 187, 0.589);
-    font-size: 1.2vw;
-    
+nav:hover {
+	background-color: rgba(192, 191, 187, 0.589);
+	font-size: 1.2vw;
 }
 
-a{
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
+a {
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
 }
 
 a:hover {
-    color: orange;
+	color: orange;
 }
 
-a:active{
-    color: white;
+a:active {
+	color: white;
 }
 
-button{
-    cursor: pointer;
+button {
+	cursor: pointer;
 }
 
-.inputBtn{
-    cursor: pointer;
+.inputBtn {
+	cursor: pointer;
 }
 
-
-
-
-@media screen and (max-width: 600px){
-	nav{
-
-	    font-size: 2vw;
-	    flex-direction: column;
-	    
-	
+@media screen and (max-width: 600px) {
+	nav {
+		font-size: 2vw;
+		flex-direction: column;
 	}
-	
-	*{
+	* {
 		font-size: 2vw;
 		flex-direction: column;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

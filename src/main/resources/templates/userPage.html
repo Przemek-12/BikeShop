@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/basicStyles.css">
-	<link rel="stylesheet" href="css/userPageStyles.css">
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-	<title>userPage</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/basicStyles.css">
+<link rel="stylesheet" href="css/userPageStyles.css">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+	rel="stylesheet">
+<title>userPage</title>
 </head>
 <body>
-	
-	<nav>
-		<a id="mainPageBtn" href="/mainPage">MainPage</a>
-		<a th:href="@{/logOut}" th:text="LogOut"></a>
-	</nav>
-	
-	<section id="section1">
-	
-			<div id="orderList">
-				<div id="order" th:each="order: ${listOfOrders}">
-					
-					<div id="container1">
-						<div th:text="${order.description}"></div>
-						<div th:text="${order.price}"></div>
-						<div th:text="${order.orderSubmitTime}"></div>
-					</div>
-					
-					<div id="elementsList">
-						<div id="listElement" th:each="element: ${order.listOfElements}">
-							<div th:text="${element.model}"></div>
-							<div th:text="${element.price}"></div>
-						</div>
-					</div>
-				
-				</div>
-			</div>
 
-			<div class="backgroundImg"></div>
-			
+	<nav>
+		<a id="mainPageBtn" href="/mainPage">MainPage</a> <a
+			th:href="@{/logOut}" th:text="LogOut"></a>
+	</nav>
+
+	<section id="section1">
+
+		<div id="orderList">
+			<div id="order" th:each="order: ${listOfOrders}">
+
+				<div id="container1">
+					<div th:text="${order.description}"></div>
+					<div th:text="${order.price}"></div>
+					<div th:text="${order.orderSubmitTime}"></div>
+				</div>
+
+				<div id="elementsList">
+					<div id="listElement" th:each="element: ${order.listOfElements}">
+						<div th:text="${element.model}"></div>
+						<div th:text="${element.price}"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="backgroundImg"></div>
+
 	</section>
-	
-	
-	
-	
+
+
+
+
 </body>
 </html>
