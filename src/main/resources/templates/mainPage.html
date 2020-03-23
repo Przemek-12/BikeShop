@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/basicStyles.css">
+	<link rel="stylesheet" href="css/mainPageStyles.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<nav>
+		<a  id="loginUserBtn" th:href="@{'/'+${location}}" th:text="${textOnHref}"></a>
+	</nav>
+	
+	<section id="section1">
+	
+		<div id="btnDiv">
+			<div id="btnBackground"></div>
+			<button id="createBikeBtn" th:onclick="window.location.href='/frames'" th:text="${textOnButton}" th:disabled="${btnDisabled}"></button>
+		</ffewf>
+	
+	</section>
+	
+	
+	
+</body>
+</html>

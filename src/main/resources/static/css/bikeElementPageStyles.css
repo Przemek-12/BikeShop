@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+#section1{
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	font-size: 1vw;
+}
+
+form{
+	padding: 3%;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+	width: 0.5%;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #72737571; 
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888; 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(230, 230, 230); 
+}
+
+
+.product{
+	position: relative;
+	width: 25%;
+	height: 45%;
+	box-shadow: 0 0 2em rgba(255, 255, 255, 0.61);
+	border-radius: 1em;
+	background-color: rgba(136, 136, 136, 0.527);
+	color: white;
+	overflow: hidden;
+	transition: width 0.5s, height 0.5s;
+	margin: 3%;
+}
+
+.product:hover{
+	width: 26%;
+	height: 46%;
+}
+
+.product:active{
+	width: 24%;
+	height: 44%;
+}
+
+.model{
+	position: relative;
+	width: 100%;
+	height: 10%;
+	padding: 2%;
+	z-index: 1;
+}
+
+.price{
+	position: relative;
+	width: 100%;
+	height: 10%;
+	padding: 2%;
+	z-index: 1;
+}
+
+.image{
+	position: relative;
+	width: 100%;
+	height: 80%;
+	z-index: 2;
+}
+
+
+
+.checkboxContainer{
+	position: absolute;
+	width: 100%;
+	height: 5%;
+}
+
+.checkboxInput{
+	position: absolute;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 100;
+	cursor: pointer;
+}
+
+.checkboxInput:checked +.newCheckbox{
+	display: block;
+}
+
+
+.newCheckbox{
+	position: absolute;
+	width: 100%;
+	height: 5%;
+	bottom: 0;
+	z-index: 50;
+	background-color: rgb(67, 161, 58);
+	display: none;
+	text-align: center;
+}
+
+
+#submitBtn{
+	position: fixed;
+	border: 2px solid white;
+	background-color: rgb(197, 127, 69);
+	width: 10%;
+	height: 8%;
+	font-size: 1.2vw;
+	text-transform: uppercase;
+	color: white;
+	right: 0.5%;
+	bottom: 0;
+	cursor: pointer;
+}
+
+#submitBtn:hover{
+	background-color: rgb(206, 176, 151);
+}
+#submitBtn:active{
+	background-color: rgb(212, 115, 36);
+}
+
+
+
+@media screen and (max-width: 600px){
+
+	form{
+		display: block;
+	}
+	.product{
+		width: 100%;
+		height: 50%;
+	}
+	.product:hover{
+		width: 100%;
+		height: 50%;
+	}
+
+	.product:active{
+		width: 100%;
+		height: 50%;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+#section1{
+	display:flex;
+	width:100vw;
+	height:100vh;
+	background:url("jpgs/coolBike.jpg");
+	background-size:100% ;
+	background-position: center;
+}
+
+#formArea{
+	width:50%;
+	height:100%;
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	justify-content: center;
+}
+
+form{
+	height:70%;
+	width:50%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	background-color:rgba(160, 156, 156, 0.63);
+	box-shadow: 0 0 2em rgba(0, 0, 0, 0.61);
+}
+
+form *{
+	margin: 2%;
+}
+
+form input{
+	width: 70%;
+	height: 8%;
+	padding: 2%;
+	font-size: 1.2vw;
+	color: white;
+	border: 2px solid white;
+	background-color: transparent;
+}
+
+input::placeholder{
+	color:rgb(216, 216, 216);
+}
+
+form div{
+	font-size:1.2vw;
+	color:rgb(184, 57, 57);
+}
+
+
+
+.inputBtn{
+	background-color: rgb(69, 131, 189);
+}
+.inputBtn:hover{
+	background-color: rgb(171, 191, 209);
+	color: rgb(69, 131, 189);
+}
+.inputBtn:active{
+	background-color: rgb(4, 62, 117);
+}
+
+
+
+.logRegBtn{
+	font-size: 1vw;
+	position:relative;
+	width: 30%;
+	height: 5%;
+	top:-8%;
+	background-color: rgb(69, 131, 189);
+	color:white;
+	border: 2px solid white;
+}
+.logRegBtn:hover{
+	background-color: rgb(171, 191, 209);
+	color: rgb(69, 131, 189);
+}
+.logRegBtn:active{
+	background-color: rgb(4, 62, 117);
+}
+
+
+
+

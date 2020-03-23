@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/basicStyles.css">
+	<link rel="stylesheet" href="css/loginRegisterPageStyles.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<nav>
+		<a id="mainPageBtn" href="/mainPage">MainPage</a>
+	</nav>
+	
+	<section id="section1">
+		<div id="formArea">
+			<form th:object="${loginUser}" method="POST">
+
+				<input id="username" name="username" th:field="*{username}" placeholder="Username">
+				<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+				
+				<input name="password" th:field="*{password}" placeholder="Password">
+				<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+				
+				<div th:if="${wrongData}==true">Incorrect username or password</div>
+				
+				<input class="inputBtn" type="submit" value="LogIn">
+
+			</form>
+		
+			<button class="logRegBtn" id="registerBtn" th:onclick="window.location.href='/registerPage'">Register</button>
+		</div>
+		
+		
+	</section>
+	
+</body>
+</html>

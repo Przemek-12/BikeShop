@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/basicStyles.css">
+	<link rel="stylesheet" href="css/orderPageStyles.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+	<title>Insert title here</title>
+</head>
+<body>
+	
+	<nav>
+		<a id="mainPageBtn" href="/mainPage">MainPage</a>
+	</nav>
+	
+	<section id="section1">
+	
+		
+			<form class="description" method="POST">
+				<div th:text="${bikeDescription}"></div>
+				<div th:text="${bikePrice}"></div>
+				<button id="submitBtn">Submit Order</button>
+			</form>
+		
+		
+		<div class="orderList">
+			<div class="orderListElement"  th:each="element: ${orderList}">
+				<form action="orderPage/remove" method="POST">
+					<div th:text="${element.model}"></div>
+					<div th:text="${element.price}"></div>
+					<button id="deleteBtn" name="elementId" th:value="${element.elementId}">Delete</button>
+				</form>
+			</div>
+		</div>
+	
+	</section>
+	
+	
+	
+</body>
+</html>
