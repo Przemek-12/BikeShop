@@ -34,31 +34,38 @@ public class BikeElementPageController {
 	@GetMapping
 	public String bikeElementPage(@PathVariable("element") String element, Model model, HttpServletRequest request) {
 		
-		//bike object is object that is decorated
-		//request.getSession() Returns the current session associated with this request, or if the request does not have a session, creates one.
-		Bike bike = (Bike)request.getSession().getAttribute("BikeSessionObject");
+		//page will be loaded if user is logged
+		if(request.getSession().getAttribute("LOGGED_USER")!=null) {
 		
-		//if bike object is null it will be created and set as session attribute
-		if(bike==null) {
-			request.getSession().setAttribute("BikeSessionObject", new BasicBike());
+			//bike object is object that is decorated
+			//request.getSession() Returns the current session associated with this request, or if the request does not have a session, creates one.
+			Bike bike = (Bike)request.getSession().getAttribute("BikeSessionObject");
+			
+			//if bike object is null it will be created and set as session attribute
+			if(bike==null) {
+				request.getSession().setAttribute("BikeSessionObject", new BasicBike());
+			}
+			
+			//gets category object from categories table
+			Categories category = categoriesService.getCategory(element);
+			
+			//sets elementList attribute, list of objects is acquired based on catergoryId variable, which is id of specific category  
+			model.addAttribute("elementList", bikeService.getList(category.getCategoryId()));
+			
+			//folder with element graphics, elementString is used as variable in path to jpg location
+			model.addAttribute("elementString", element);
+			
+			//puts text on next location button
+			model.addAttribute("nextLocationText", category.getNextCategory().toUpperCase());
+			
+			//object that will be submitted by form
+			model.addAttribute("bikeElement", new BikeElement());
+			
+			
+			return "bikeElementPage";
 		}
 		
-		//gets category object from categories table
-		Categories category = categoriesService.getCategory(element);
-		
-		//sets elementList attribute, list of objects is acquired based on catergoryId variable, which is id of specific category  
-		model.addAttribute("elementList", bikeService.getList(category.getCategoryId()));
-		
-		//folder with element graphics, elementString is used as variable in path to jpg location
-		model.addAttribute("elementString", element);
-		
-		//puts text on next location button
-		model.addAttribute("nextLocationText", category.getNextCategory().toUpperCase());
-		
-		//object that will be submitted by form
-		model.addAttribute("bikeElement", new BikeElement());
-		
-		return "bikeElementPage";
+		return "redirect:/mainPage";
 	}
 	
 	

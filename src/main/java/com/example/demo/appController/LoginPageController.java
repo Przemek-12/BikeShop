@@ -32,13 +32,17 @@ public class LoginPageController {
 	
 	@GetMapping
 	public String loginPage(Model model) {
+		
+		//Incorrect username or password info 
 		model.addAttribute("wrongData", false);
+		
 		return "loginPage";
 	}
 	
 	
-	//@modelAttribute behind User indicates that object parameters should come from model and Spring will not attach to it request parameters, 
-	//in order to use @modelAttribute before method argument, @ModelAtribute method must be created
+	//@modelAttribute When used as a method argument, it indicates the argument should be retrieved from the model. 
+	//When not present, it should be first instantiated and then added to the model and once present in the model, 
+	//the arguments fields should be populated from all request parameters that have matching names. 
 	//@Valid - user object will be validated before sending further
 	//all errors will be stored in errors object
 	@PostMapping

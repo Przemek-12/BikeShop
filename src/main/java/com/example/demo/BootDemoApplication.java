@@ -11,6 +11,9 @@ import org.springframework.context.annotation.ComponentScan;
 	//@SpringBootConfiguration - configuration class, specialized form of Configuration annotation
 	//@EnableAutoConfiguration - automatically switches on Spring Boot configuration
 	//@ComponentScan - scan for components, classes with annotations @Component, @Controller, @Service
+	//@EnableWebMvc: Flags the application as a web application and activates key behaviors, such as setting up a DispatcherServlet. 
+	//				Spring Boot adds it automatically when it sees spring-webmvc on the classpath.
+	//DispatcherServlet is responsible for correctly coordinating the HttpRequests to their right handlers.
 @ComponentScan(basePackages="com.example.demo")
 @EntityScan(basePackages="com.example.demo.user")
 public class BootDemoApplication {
