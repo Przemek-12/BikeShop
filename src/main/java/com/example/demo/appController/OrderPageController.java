@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -79,10 +80,10 @@ public class OrderPageController {
 	
 	
 	@PostMapping("/remove")
-	public String removeFromOrder(@RequestParam int elementId, HttpServletRequest request) {
+	public String removeFromOrder(int elementId, HttpServletRequest request) {
 		
 		Bike bike = (Bike)request.getSession().getAttribute("BikeSessionObject");
-		request.getSession().removeAttribute("BikeSessionObject");
+		//request.getSession().removeAttribute("BikeSessionObject");
 		
 		bike.removeFromDescription(bike.bikeElements().get(elementId).getModel());	
 		bike.removeFromPrice(bike.bikeElements().get(elementId).getPrice());

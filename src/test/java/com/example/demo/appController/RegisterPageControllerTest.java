@@ -33,6 +33,7 @@ public class RegisterPageControllerTest {
 	public void pageLoadTest() throws Exception {
 		mockMvc.perform(get("/registerPage"))
 		.andDo(print())
+		.andExpect(status().isOk())
 		.andExpect(view().name("registerPage"))
 		.andExpect(model().attribute("userIsTaken", false))
 		.andExpect(model().attribute("emailIsTaken", false));
@@ -49,7 +50,7 @@ public class RegisterPageControllerTest {
 			.param("username", "Jimmy")
 			.param("password", "Arrow")
 			.param("email", "Arrow@qw.com")
-			.sessionAttr("loginUser", new User())	
+			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(redirectedUrl("/loginPage"));
@@ -65,7 +66,7 @@ public class RegisterPageControllerTest {
 			.param("username", "John")
 			.param("password", "a")
 			.param("email", "pece@gmail.com")
-			.sessionAttr("loginUser", new User())	
+			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(status().isOk())
@@ -84,7 +85,7 @@ public class RegisterPageControllerTest {
 			.param("username", "a")
 			.param("password", "a")
 			.param("email", "a")
-			.sessionAttr("loginUser", new User())	
+			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(status().isOk())

@@ -33,6 +33,7 @@ public class LoginPageControllerTest {
 	public void pageLoadTest() throws Exception {
 		mockMvc.perform(get("/loginPage"))
 		.andDo(print())
+		.andExpect(status().isOk())
 		.andExpect(view().name("loginPage"))
 		.andExpect(model().attribute("wrongData", false));
 	}
@@ -48,7 +49,7 @@ public class LoginPageControllerTest {
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "John")
 			.param("password", "Wick")
-			.sessionAttr("loginUser", new User())	
+			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(redirectedUrl("/mainPage"));
@@ -63,7 +64,7 @@ public class LoginPageControllerTest {
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "John")
 			.param("password", "Wayne")
-			.sessionAttr("loginUser", new User())	
+			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(status().isOk())
@@ -80,7 +81,7 @@ public class LoginPageControllerTest {
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "a")
 			.param("password", "a")
-			.sessionAttr("loginUser", new User())	
+			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(status().isOk())
