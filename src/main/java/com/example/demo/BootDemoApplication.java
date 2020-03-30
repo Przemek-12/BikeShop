@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 	//				Spring Boot adds it automatically when it sees spring-webmvc on the classpath.
 	//DispatcherServlet is responsible for correctly coordinating the HttpRequests to their right handlers.
 @ComponentScan(basePackages="com.example.demo")
-@EntityScan(basePackages="com.example.demo.user")
+@EntityScan(basePackages="com.example.demo.entity")
 public class BootDemoApplication {
 
 	public static void main(String[] args) {
