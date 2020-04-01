@@ -85,17 +85,18 @@ public class HibernateConfiguration {
 	}
 	
 	
+	//entityManager can be used instead of sessionFactory
 	//Spring container creates the objects, wire them together, configure them, and manage their complete life cycle from creation till destruction. 
 	//to use entity class objects, EntityManager must be set up first
-	@Bean(name="entityManagerFactory")
-	public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
-	    LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
-	    lcemfb.setDataSource(getDataSource());
-	    lcemfb.setPackagesToScan("com.example.demo.entity");
-	    lcemfb.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-	    lcemfb.setPersistenceUnitName("localEntity");
-	    return lcemfb;
-	}
+	//@Bean(name="entityManagerFactory")
+	//public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
+	//    LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
+	//    lcemfb.setDataSource(getDataSource());
+	//    lcemfb.setPackagesToScan("com.example.demo.entity");
+	//    lcemfb.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+	//    lcemfb.setPersistenceUnitName("localEntity");
+	//    return lcemfb;
+	//}
 	
 	
 	
