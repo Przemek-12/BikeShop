@@ -5,14 +5,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/basicStyles.css">
 <link rel="stylesheet" href="css/orderPageStyles.css">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+<script src="js/orderPageJS.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 
 	<nav>
-		<a id="mainPageBtn" href="/mainPage">MainPage</a>
+		<a id="mainPageBtn" href="/mainpage">MainPage</a>
 	</nav>
 
 	<section id="section1">
@@ -27,12 +28,13 @@
 
 		<div class="orderList">
 			<div class="orderListElement" th:each="element: ${orderList}">
-				<form action="orderPage/remove" method="POST">
+			
+				<div id="littleForm">
 					<div th:text="${element.model}"></div>
 					<div th:text="${element.price}"></div>
-					<button id="deleteBtn" name="elementId"
-						th:value="${element.elementId}">Delete</button>
-				</form>
+					<button class="deleteBtn" name="elementId" th:value="${element.elementId}" >Delete</button>
+				</div>
+				
 			</div>
 		</div>
 

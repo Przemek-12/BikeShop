@@ -6,10 +6,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication(exclude=HibernateJpaAutoConfiguration.class)
+@SpringBootApplication
+//(exclude=HibernateJpaAutoConfiguration.class) - if entitymanager bean is created by configuration, autoconfiguration must be excluded because it creates entitymanager bean
 	//contains:
 	//@SpringBootConfiguration - configuration class, specialized form of Configuration annotation
-	//@EnableAutoConfiguration - automatically switches on Spring Boot configuration
+	//@EnableAutoConfiguration - automatically switches on Spring Boot configuration- transactionmanager(possibility of use transactional), datasource, entitymanager
 	//@ComponentScan - scan for components, classes with annotations @Component, @Controller, @Service
 	//@EnableWebMvc: Flags the application as a web application and activates key behaviors, such as setting up a DispatcherServlet. 
 	//				Spring Boot adds it automatically when it sees spring-webmvc on the classpath.

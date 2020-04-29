@@ -16,7 +16,7 @@ div {
 	color: white;
 }
 
-form {
+form, #littleForm {
 	border: 1px solid white;
 	width: 60%;
 	height: 60%;
@@ -74,7 +74,7 @@ form {
 	width: 100%;
 }
 
-.orderListElement form {
+.orderListElement #littleForm {
 	display: flex;
 	flex-direction: row;
 	height: 100%;
@@ -83,7 +83,7 @@ form {
 	justify-content: space-around;
 }
 
-#deleteBtn {
+.deleteBtn {
 	height: 30%;
 	width: 15%;
 	border: 1px solid white;
@@ -92,10 +92,10 @@ form {
 	color: white;
 }
 
-#deleteBtn:hover {
+.deleteBtn:hover {
 	background-color: rgb(111, 132, 155);
 }
 
-#deleteBtn:active {
+.deleteBtn:active {
 	background-color: rgb(14, 49, 88);
 }

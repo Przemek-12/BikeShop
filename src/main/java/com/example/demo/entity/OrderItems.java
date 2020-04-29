@@ -9,6 +9,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+
+
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="order_items")
 public class OrderItems implements Serializable{
@@ -17,55 +30,20 @@ public class OrderItems implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="order_item_id")
-	private int orderItemId;
+	private long orderItemId;
 	
+	@NonNull
 	@Column(name="order_id")
-	private int orderId;
+	private long orderId;
 	
+	@NonNull
 	@Column(name="element_id")
-	private int elementId;
-
+	private long elementId;
 	
 	
-	public OrderItems() {
-		super();
-	}
 
-	public OrderItems(int orderId, int elementId) {
-		super();
-		this.orderId = orderId;
-		this.elementId = elementId;
-	}
 
-	public int getOrderItemId() {
-		return orderItemId;
-	}
-
-	public void setOrderItemId(int orderItemId) {
-		this.orderItemId = orderItemId;
-	}
-
-	public int getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
-	}
-
-	public int getElementId() {
-		return elementId;
-	}
-
-	public void setElementId(int elementId) {
-		this.elementId = elementId;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 	
 }

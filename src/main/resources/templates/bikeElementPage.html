@@ -13,7 +13,7 @@
 <body>
 
 	<nav>
-		<a id="mainPageBtn" href="/mainPage">MainPage</a>
+		<a id="mainPageBtn" href="/mainpage">MainPage</a>
 	</nav>
 
 	<section id="section1">
@@ -24,9 +24,7 @@
 
 				<div class="model" th:text="${element.model}"></div>
 				<div class="price" th:text="${element.price}"></div>
-				<div class="image"
-					th:style=" 'background: url(graphics/' +${elementString}+ '/' +${element.imgPath}+ '.jpg); background-size:100% 100%;background-position: center;' ">
-				</div>
+				<div class="image" th:style=" 'background: url(graphics/' +${elementString}+ '/' +${element.imgPath}+ '.jpg); background-size:100% 100%;background-position: center;' "></div>
 
 				<!-- value of input checkbox is element.elementId, name attribute is equivalent to variable in bikeElement object 
 				If object had list variable, then multiple inputs with same name would be put into list -->

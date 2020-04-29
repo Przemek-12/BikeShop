@@ -10,12 +10,12 @@ import com.example.demo.entity.Categories;
 public class CategoriesService {
 
 	@Autowired
-	private CategoriesDao categoriesDao;
+	private CategoriesRepository categoriesRepository;
 	
 	
 	@Transactional
 	public Categories getCategory(String element) {
-		Categories category = categoriesDao.getCategory(element);
+		Categories category = categoriesRepository.getCategory(element);
 		return category;
 	}
 	

@@ -9,6 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name="categories")
 public class Categories implements Serializable{
@@ -16,56 +24,21 @@ public class Categories implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@NonNull
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="category_id")
-	private int categoryId;
+	private long categoryId;
 	
+	@NonNull
 	@Column(name="category_name")
 	private String categoryName;
 	
+	@NonNull
 	@Column(name="next_category")
 	private String nextCategory;
 
-	
-	
-	public Categories() {
-		super();
-	}
 
-	public Categories(int categoryId, String categoryName, String nextCategory) {
-		super();
-		this.categoryId = categoryId;
-		this.categoryName = categoryName;
-		this.nextCategory = nextCategory;
-	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
-	public String getNextCategory() {
-		return nextCategory;
-	}
-
-	public void setNextCategory(String nextCategory) {
-		this.nextCategory = nextCategory;
-	}
-	
-	
-	
 	
 	
 }

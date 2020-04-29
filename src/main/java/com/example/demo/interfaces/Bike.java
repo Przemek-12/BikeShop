@@ -10,9 +10,9 @@ public interface Bike {
 
 	String description();
 	Double price();
-	Map<Integer,BikeElement> bikeElements();
+	Map<Long,BikeElement> bikeElements();
 	void addToMap(BikeElement bikeElement);
-	void removeFromMap(int elementId);
+	void removeFromMap(long elementId);
 	void removeFromDescription(String model);
 	void removeFromPrice(Double price);
 }

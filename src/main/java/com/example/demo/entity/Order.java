@@ -14,9 +14,24 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+
+
+@Getter
+@Setter
+@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="orders")
 public class Order implements Serializable{
+
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,17 +39,21 @@ public class Order implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "orderId_generator")
 	@SequenceGenerator(name="orderId_generator", sequenceName = "orderId_seq", allocationSize=50)
 	@Column(name="order_id")
-	private int orderId;
+	private long orderId;
 	
+	@NonNull
 	@Column(name="user_id")
-	private int userId;
+	private long userId;
 	
+	@NonNull
 	@Column(name="bike_description")
 	private String description;
 	
+	@NonNull
 	@Column(name="price")
 	private Double price;
 	
+	@NonNull
 	@Column(name="orderSubmitTime")
 	private LocalDateTime orderSubmitTime;
 	
@@ -42,73 +61,6 @@ public class Order implements Serializable{
 	//field has no representation as column in database
 	private List<BikeElement> listOfElements;
 	
-
-	
-	
-	
-	public Order() {}
-
-
-	public Order(int userId, String description, Double price, LocalDateTime orderSubmitTime) {
-		super();
-		this.userId = userId;
-		this.description = description;
-		this.price = price;
-		this.orderSubmitTime = orderSubmitTime;
-	}
-	
-	
-	
-	
-
-	public List<BikeElement> getListOfElements() {
-		return listOfElements;
-	}
-
-
-	public void setListOfElements(List<BikeElement> listOfElements) {
-		this.listOfElements = listOfElements;
-	}
-
-	public int getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
-	public LocalDateTime getOrderSubmitTime() {
-		return orderSubmitTime;
-	}
-
-	public void setOrderSubmitTime(LocalDateTime orderSubmitTime) {
-		this.orderSubmitTime = orderSubmitTime;
-	}
 
 
 	

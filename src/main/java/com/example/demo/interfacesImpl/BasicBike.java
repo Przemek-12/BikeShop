@@ -15,7 +15,7 @@ public class BasicBike implements Bike, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	//LinkedHashMap remembers order of adding 
-	private Map<Integer,BikeElement> bikeElements = new LinkedHashMap<>();
+	private Map<Long,BikeElement> bikeElements = new LinkedHashMap<>();
 	
 	private String description="";
 	
@@ -33,7 +33,7 @@ public class BasicBike implements Bike, Serializable {
 	}
 
 	@Override
-	public Map<Integer,BikeElement> bikeElements() {
+	public Map<Long,BikeElement> bikeElements() {
 		return bikeElements;
 	}
 
@@ -43,7 +43,7 @@ public class BasicBike implements Bike, Serializable {
 	}
 	
 	@Override
-	public void removeFromMap(int elementId) {
+	public void removeFromMap(long elementId) {
 		bikeElements.remove(elementId);
 	}
 

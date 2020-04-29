@@ -10,22 +10,18 @@ import com.example.demo.entity.User;
 public class UserService {
 
 	@Autowired
-	private UserDao userDao;
+	private UserRepository userRepository;
 	
 	
 	@Transactional
 	public void saveUser(User user) {
-		userDao.saveUser(user);
+		userRepository.save(user);
 	}
 	
-	@Transactional
-	public void updateUser(User user) {
-		userDao.updateUser(user);
-	}
 	
 	@Transactional
 	public User getUserLogin(String username, String password) {
-		User user = userDao.getUserLogin(username, password);
+		User user = userRepository.getUserLogin(username, password);
 		if(user!=null) {
 			return user;
 		}
@@ -35,7 +31,7 @@ public class UserService {
 	@Transactional
 	//returns true if username exists in db
 	public boolean getUserUsername(String username) {
-		User user = userDao.getUserUsername(username);
+		User user = userRepository.getUserUsername(username);
 		if(user==null) {
 			return false;
 		}
@@ -45,15 +41,12 @@ public class UserService {
 	@Transactional
 	//returns true if email exists in db
 	public boolean getUserEmail(String email) {
-		User user = userDao.getUserEmail(email);
+		User user = userRepository.getUserEmail(email);
 		if(user==null) {
 			return false;
 		}
 		return true;
 	}
 	
-	@Transactional
-	public void deleteUser(User user) {
-		userDao.deleteUser(user);
-	}
+	
 }

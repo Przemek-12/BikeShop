@@ -17,7 +17,7 @@ import com.example.demo.entity.User;
 import com.example.demo.user.UserService;
 
 @Controller
-@RequestMapping("/loginPage")
+@RequestMapping("/loginpage")
 public class LoginPageController {
 
 	@Autowired
@@ -53,7 +53,7 @@ public class LoginPageController {
 			if(user2!=null) {
 				httpSession.setAttribute("LOGGED_USER", user2);
 				model.addAttribute("wrongData", false);
-				return "redirect:/mainPage";
+				return "redirect:/mainpage";
 			}
 			
 			if(errors.hasErrors()) {

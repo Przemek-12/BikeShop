@@ -25,7 +25,7 @@ public class BikeElementDecorator extends BikeDecorator implements Serializable{
 
 	@Override
 	public String description() {
-		System.out.println(bikeElement.getModel());
+		//System.out.println(bikeElement.getModel());
 		
 		if(super.description().contains(bikeElement.getModel())) {
 			return super.description().replace(bikeElement.getModel(), "");
@@ -39,7 +39,7 @@ public class BikeElementDecorator extends BikeDecorator implements Serializable{
 	}
 
 	@Override
-	public Map<Integer, BikeElement> bikeElements() {
+	public Map<Long, BikeElement> bikeElements() {
 		return super.bikeElements();
 	}
 	
@@ -49,7 +49,7 @@ public class BikeElementDecorator extends BikeDecorator implements Serializable{
 	}
 	
 	@Override
-	public void removeFromMap(int elementId) {
+	public void removeFromMap(long elementId) {
 		super.removeFromMap(elementId);
 	}
 

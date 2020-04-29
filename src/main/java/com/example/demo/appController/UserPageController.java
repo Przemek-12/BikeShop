@@ -20,50 +20,19 @@ import com.example.demo.order.OrderService;
 import com.example.demo.orderItems.OrderItemsService;
 
 @Controller
-@RequestMapping("/userPage")
+@RequestMapping("/userpage")
 public class UserPageController {
 	
 	
 	@Autowired
 	private OrderService orderService;
 	
-	@Autowired
-	private OrderItemsService orderItemsService;
 	
-	@Autowired
-	private BikeElementService bikeElementService;
-	
-	
+
 	@GetMapping
 	public String userPage(Model model, HttpServletRequest request) {
-		
-		User user = (User)request.getSession().getAttribute("LOGGED_USER");
-		
-		//list of all order submitted by logged user
-		List<Order> listOfOrders = orderService.getOrderList(user.getUserId());
-		
-		for(Order order: listOfOrders) {
-			
-			//list of OrderItems objects for particular order
-			List<OrderItems> orderItemsObjects = orderItemsService.getOrderItemsList(order.getOrderId());
-			
-			//list of elements that will be set to order object
-			List<BikeElement> listOfElements = new ArrayList<>();
-			
-			for(OrderItems item: orderItemsObjects) {
 				
-				//orderItems object contain elemntId, so those elements must be taken from db using those ids
-				listOfElements.add(bikeElementService.getElement(item.getElementId()));
-			}
-			order.setListOfElements(listOfElements);
-			
-		}
-		
-		
-		model.addAttribute("listOfOrders", listOfOrders);
-		
-
-		
+		model.addAttribute("listOfOrders", orderService.getOrderList(request));
 		
 		return "userPage";
 	}

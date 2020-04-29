@@ -13,15 +13,15 @@ import com.example.demo.entity.OrderItems;
 public class OrderItemsService {
 
 	@Autowired
-	private OrderItemsDao orderItemsDao;
+	private OrderItemsRepository orderItemsRepository;
 	
 	@Transactional
 	public void saveItem(OrderItems item) {
-		orderItemsDao.saveItem(item);
+		orderItemsRepository.save(item);
 	}
 	
 	@Transactional
-	public List<OrderItems> getOrderItemsList(int orderId){
-		return orderItemsDao.getOrderItemsList(orderId);
+	public List<OrderItems> getOrderItemsList(long orderId){
+		return orderItemsRepository.getOrderItemsList(orderId);
 	}
 }

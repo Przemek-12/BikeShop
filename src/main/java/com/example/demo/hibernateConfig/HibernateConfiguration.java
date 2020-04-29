@@ -20,8 +20,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
-@PropertySource(value={"classpath:application.properties"})
+//@Configuration
+//@PropertySource(value={"classpath:application.properties"})
 public class HibernateConfiguration {
 
 	@Value("${jdbc.driverClassname}")
@@ -49,10 +49,12 @@ public class HibernateConfiguration {
 	}
 	
 	
+	
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", dialect);
-		properties.put("hibernate.hbm2dll.auto", "update");
+		properties.put("hibernate.dll-auto", "update");
+		properties.put("generate-ddl", "true");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
 		return properties;

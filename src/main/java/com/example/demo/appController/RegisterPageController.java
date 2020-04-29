@@ -14,19 +14,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.entity.User;
 import com.example.demo.user.UserService;
 
+
 @Controller
-@RequestMapping("/registerPage")
+@RequestMapping("/registerpage")
 public class RegisterPageController {
 
+	
+	
 	@Autowired
 	private UserService userService;
 	
 
-	
 	@ModelAttribute(name="registerUser")
 	public User registerUser() {
 		return new User();
 	}
+	
 	
 	@GetMapping
 	public String registerPage(Model model) {
@@ -34,6 +37,7 @@ public class RegisterPageController {
 		model.addAttribute("emailIsTaken", false);
 		return "registerPage";
 	}
+	
 	
 	@PostMapping
 	public String registerUser(@ModelAttribute("registerUser") @Valid  User user, Errors errors, Model model) {
@@ -60,9 +64,8 @@ public class RegisterPageController {
 		
 		else if(!userService.getUserUsername(user.getUsername()) && !userService.getUserEmail(user.getEmail())){
 			userService.saveUser(user);
-			return "redirect:/loginPage";
+			return "redirect:/loginpage";
 		}
-		
 		
 		
 		return null;

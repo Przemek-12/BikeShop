@@ -9,17 +9,20 @@ import com.example.demo.entity.BikeElement;
 @Service
 public class BikeElementService {
 
+	
 	@Autowired
-	private BikeElementDao bikeElementDao;
+	private BikeElementRepository bikeElementRepository;
+	
 	
 	@Transactional
-	public BikeElement getElement(int id) {
-		return bikeElementDao.getElement(id);
+	public BikeElement getElement(long elementId) {
+		return bikeElementRepository.getElement(elementId);
 	}
 	
+	
 	@Transactional
-	public List<BikeElement> getList(int categoryId){
-		return bikeElementDao.getList(categoryId);
+	public List<BikeElement> getList(long categoryId){
+		return bikeElementRepository.getList(categoryId);
 	}
 	
 }

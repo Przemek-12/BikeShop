@@ -30,7 +30,7 @@ public abstract class BikeDecorator implements Bike, Serializable {
 	}
 
 	@Override
-	public Map<Integer,BikeElement> bikeElements() {
+	public Map<Long,BikeElement> bikeElements() {
 		return bike.bikeElements();
 	}
 	
@@ -40,7 +40,7 @@ public abstract class BikeDecorator implements Bike, Serializable {
 	}
 
 	@Override
-	public void removeFromMap(int elementId) {
+	public void removeFromMap(long elementId) {
 		bike.removeFromMap(elementId);
 	}
 	

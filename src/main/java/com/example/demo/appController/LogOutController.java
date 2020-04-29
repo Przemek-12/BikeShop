@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LogOutController {
 	
-	@GetMapping("/logOut")
+	@GetMapping("/logout")
 	public String logOutSession(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "redirect:/mainPage";
+		return "redirect:/mainpage";
 	}
 	
 
