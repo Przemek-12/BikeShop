@@ -22,6 +22,6 @@ public class OrderItemsService {
 	
 	@Transactional
 	public List<OrderItems> getOrderItemsList(long orderId){
-		return orderItemsRepository.getOrderItemsList(orderId);
+		return orderItemsRepository.findByOrderId(orderId);
 	}
 }

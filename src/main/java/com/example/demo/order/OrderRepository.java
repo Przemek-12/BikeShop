@@ -13,7 +13,6 @@ import com.example.demo.entity.Order;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long>{
 
-	@Query("from Order where userId=:userId")
-	List<Order> getOrderList(@Param("userId") long userId);
+	List<Order> findByUserId(long userId);
 	
 }

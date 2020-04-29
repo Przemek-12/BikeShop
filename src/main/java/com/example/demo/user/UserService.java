@@ -21,7 +21,7 @@ public class UserService {
 	
 	@Transactional
 	public User getUserLogin(String username, String password) {
-		User user = userRepository.getUserLogin(username, password);
+		User user = userRepository.findByUsernameAndPassword(username, password);
 		if(user!=null) {
 			return user;
 		}
@@ -31,7 +31,7 @@ public class UserService {
 	@Transactional
 	//returns true if username exists in db
 	public boolean getUserUsername(String username) {
-		User user = userRepository.getUserUsername(username);
+		User user = userRepository.findByUsername(username);
 		if(user==null) {
 			return false;
 		}
@@ -41,7 +41,7 @@ public class UserService {
 	@Transactional
 	//returns true if email exists in db
 	public boolean getUserEmail(String email) {
-		User user = userRepository.getUserEmail(email);
+		User user = userRepository.findByEmail(email);
 		if(user==null) {
 			return false;
 		}

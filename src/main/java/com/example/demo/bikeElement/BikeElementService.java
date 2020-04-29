@@ -16,13 +16,13 @@ public class BikeElementService {
 	
 	@Transactional
 	public BikeElement getElement(long elementId) {
-		return bikeElementRepository.getElement(elementId);
+		return bikeElementRepository.findByElementId(elementId);
 	}
 	
 	
 	@Transactional
 	public List<BikeElement> getList(long categoryId){
-		return bikeElementRepository.getList(categoryId);
+		return bikeElementRepository.findByCategoryId(categoryId);
 	}
 	
 }

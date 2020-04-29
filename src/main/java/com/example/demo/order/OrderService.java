@@ -22,6 +22,7 @@ import com.example.demo.orderItems.OrderItemsService;
 @Service
 public class OrderService {
 
+	
 	@Autowired
 	private OrderRepository orderRepository;
 	
@@ -34,7 +35,6 @@ public class OrderService {
 	private BikeElementService bikeElementService;
 	
 	
-
 	
 	@Transactional
 	public void saveOrder(HttpServletRequest request) {
@@ -71,7 +71,7 @@ public class OrderService {
 		User user = (User)request.getSession().getAttribute("LOGGED_USER");
 		
 		//list of all order submitted by logged user
-		List<Order> listOfOrders = orderRepository.getOrderList(user.getUserId());
+		List<Order> listOfOrders = orderRepository.findByUserId(user.getUserId());
 				
 		for(Order order: listOfOrders) {
 					

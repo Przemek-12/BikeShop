@@ -12,7 +12,6 @@ import com.example.demo.entity.Categories;
 @Repository
 public interface CategoriesRepository extends JpaRepository<Categories, Long>{
 
-	@Query("from Categories where categoryName=:element")
-	Categories getCategory(@Param("element") String element); 
+	Categories findByCategoryName(String categoryName); 
 	
 }

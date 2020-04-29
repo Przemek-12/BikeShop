@@ -13,7 +13,6 @@ import com.example.demo.entity.OrderItems;
 @Repository
 public interface OrderItemsRepository extends JpaRepository<OrderItems, Long>{
 
-	@Query("from OrderItems where orderId=:orderId")
-	List<OrderItems> getOrderItemsList(@Param("orderId")long orderId);
+	List<OrderItems> findByOrderId(long orderId);
 	
 }

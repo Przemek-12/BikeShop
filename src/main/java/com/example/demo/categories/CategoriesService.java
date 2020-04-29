@@ -14,9 +14,8 @@ public class CategoriesService {
 	
 	
 	@Transactional
-	public Categories getCategory(String element) {
-		Categories category = categoriesRepository.getCategory(element);
-		return category;
+	public Categories getCategory(String categoryName) {
+		return categoriesRepository.findByCategoryName(categoryName);
 	}
 	
 }

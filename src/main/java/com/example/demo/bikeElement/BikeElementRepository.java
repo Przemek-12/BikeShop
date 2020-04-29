@@ -13,13 +13,9 @@ import com.example.demo.entity.BikeElement;
 @Repository
 public interface BikeElementRepository extends JpaRepository<BikeElement, Long>{
 
+	BikeElement findByElementId(long elementId); 
 	
-	@Query("from BikeElement where elementId=:elementId")
-	BikeElement getElement(@Param("elementId") long elementId); 
-	
-	
-	@Query("from BikeElement where categoryId=:categoryId")
-	List<BikeElement> getList(@Param("categoryId") long categoryId);
+	List<BikeElement> findByCategoryId(long categoryId);
 	
 	
 }
