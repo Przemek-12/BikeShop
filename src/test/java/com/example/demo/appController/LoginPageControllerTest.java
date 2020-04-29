@@ -1,5 +1,6 @@
 package com.example.demo.appController;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -12,16 +13,21 @@ import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.demo.entity.User;
+import com.example.demo.order.OrderRepository;
+import com.example.demo.orderItems.OrderItemsRepository;
+import com.example.demo.user.UserService;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(LoginPageController.class)
+@WebMvcTest(controllers = LoginPageController.class)
 public class LoginPageControllerTest {
 
 	
@@ -29,9 +35,13 @@ public class LoginPageControllerTest {
 	private MockMvc mockMvc;
 	
 	
+	@MockBean
+	private UserService userService;
+	
+
 	@Test
 	public void pageLoadTest() throws Exception {
-		mockMvc.perform(get("/loginPage"))
+		mockMvc.perform(get("/loginpage"))
 		.andDo(print())
 		.andExpect(status().isOk())
 		.andExpect(view().name("loginPage"))
@@ -41,30 +51,31 @@ public class LoginPageControllerTest {
 	
 
 	@Test
-	@Transactional
 	//checks if user was logged properly, redirection to mainPage, status 302
 	public void CorrectUserTest() throws Exception {
 		
-		mockMvc.perform(post("/loginPage")
+		when(userService.getUserLogin(Mockito.any(String.class), Mockito.any(String.class))).thenReturn(new User());
+		
+		mockMvc.perform(post("/loginpage")
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "John")
 			.param("password", "Wick")
-			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
-			.andExpect(redirectedUrl("/mainPage"));
+			.andExpect(redirectedUrl("/mainpage"));
 		
 	}
 	
+	
 	@Test
-	@Transactional
 	public void UncorrectUserTest() throws Exception {
 		
-		mockMvc.perform(post("/loginPage")
+		when(userService.getUserLogin(Mockito.any(String.class), Mockito.any(String.class))).thenReturn(null);
+		
+		mockMvc.perform(post("/loginpage")
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "John")
 			.param("password", "Wayne")
-			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(status().isOk())
@@ -73,15 +84,14 @@ public class LoginPageControllerTest {
 		
 	}
 	
+	
 	@Test
-	@Transactional
 	public void UsernameAndPasswordErrorsTest() throws Exception {
 		
-		mockMvc.perform(post("/loginPage")
+		mockMvc.perform(post("/loginpage")
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "a")
-			.param("password", "a")
-			//.sessionAttr("loginUser", new User())	
+			.param("password", "a")	
 			)
 			.andDo(print())
 			.andExpect(status().isOk())

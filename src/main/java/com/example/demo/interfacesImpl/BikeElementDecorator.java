@@ -25,8 +25,6 @@ public class BikeElementDecorator extends BikeDecorator implements Serializable{
 
 	@Override
 	public String description() {
-		//System.out.println(bikeElement.getModel());
-		
 		if(super.description().contains(bikeElement.getModel())) {
 			return super.description().replace(bikeElement.getModel(), "");
 		}

@@ -31,8 +31,10 @@ public class BikeElementPageController {
 	@GetMapping
 	public String bikeElementPage(@PathVariable("element") String element, Model model, HttpServletRequest request) {
 		
+		model = bikeElementPageService.bikeElementPageGetModel(element, model, request);
+		
 		//page will be loaded if user is logged
-		if(bikeElementPageService.bikeElementPageGetModel(element, model, request)!=null) {
+		if(model!=null) {
 			
 			return "bikeElementPage";
 		}

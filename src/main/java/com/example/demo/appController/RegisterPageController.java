@@ -42,18 +42,21 @@ public class RegisterPageController {
 	@PostMapping
 	public String registerUser(@ModelAttribute("registerUser") @Valid  User user, Errors errors, Model model) {
 		
-		if(userService.getUserUsername(user.getUsername()) && userService.getUserEmail(user.getEmail())) {
+		boolean getUserUsername = userService.getUserUsername(user.getUsername());
+		boolean getUserEmail = userService.getUserEmail(user.getEmail());
+		
+		if(getUserUsername && getUserEmail) {
 			model.addAttribute("userIsTaken", true);
 			model.addAttribute("emailIsTaken", true);
 			return "registerPage";
 		}
 		
-		else if(userService.getUserUsername(user.getUsername())) {
+		else if(getUserUsername) {
 			model.addAttribute("userIsTaken", true);
 			return "registerPage";
 		}
 		
-		else if(userService.getUserEmail(user.getEmail())) {
+		else if(getUserEmail) {
 			model.addAttribute("emailIsTaken", true);
 			return "registerPage";
 		}
@@ -62,7 +65,7 @@ public class RegisterPageController {
 			return "registerPage";
 		}
 		
-		else if(!userService.getUserUsername(user.getUsername()) && !userService.getUserEmail(user.getEmail())){
+		else if(!getUserUsername && !getUserEmail){
 			userService.saveUser(user);
 			return "redirect:/loginpage";
 		}

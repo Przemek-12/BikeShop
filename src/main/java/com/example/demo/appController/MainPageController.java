@@ -18,7 +18,7 @@ public class MainPageController {
 
 	
 	@Autowired
-	private MainPageService mainPageService;
+	 MainPageService mainPageService;
 	
 	
 	@GetMapping

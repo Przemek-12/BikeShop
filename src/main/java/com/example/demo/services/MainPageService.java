@@ -33,7 +33,6 @@ public class MainPageService {
 			model.addAttribute("btnDisabled", "disabled");
 		}
 		
-		
 		return model;
 	}
 

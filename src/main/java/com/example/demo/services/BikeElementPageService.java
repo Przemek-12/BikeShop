@@ -59,10 +59,8 @@ public class BikeElementPageService {
 			//object that will be submitted by form
 			model.addAttribute("bikeElement", new BikeElement());
 			
-			
 			return model;
 		}
-		
 		
 		 return null;
 	}
@@ -91,10 +89,6 @@ public class BikeElementPageService {
 		
 		return category.getNextCategory();
 	}
-	
-	
-	
-	
 	
 	
 }
