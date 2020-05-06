@@ -1,4 +1,4 @@
-package com.example.demo.appController;
+package com.example.demo.appControllerTests;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -21,6 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.example.demo.appController.LoginPageController;
 import com.example.demo.entity.User;
 import com.example.demo.order.OrderRepository;
 import com.example.demo.orderItems.OrderItemsRepository;

@@ -10,13 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 
 
-@Data
+@RequiredArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 @Entity
 @Table(name="bike_elements")
@@ -24,9 +28,9 @@ public class BikeElement implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@NonNull
+	//@NonNull
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="element_id")
 	private long elementId;
 	

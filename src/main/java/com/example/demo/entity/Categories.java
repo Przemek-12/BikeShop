@@ -10,13 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name="categories")
 public class Categories implements Serializable{
@@ -24,9 +28,8 @@ public class Categories implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	@NonNull
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="category_id")
 	private long categoryId;
 	

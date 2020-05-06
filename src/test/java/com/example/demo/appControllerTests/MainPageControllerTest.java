@@ -1,4 +1,4 @@
-package com.example.demo.appController;
+package com.example.demo.appControllerTests;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -29,41 +29,54 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
+import org.springframework.validation.support.BindingAwareModelMap;
 
+import com.example.demo.appController.MainPageController;
+import com.example.demo.bikeElement.BikeElementService;
+import com.example.demo.categories.CategoriesService;
 import com.example.demo.entity.User;
 import com.example.demo.services.MainPageService;
 
 
-//@RunWith(SpringRunner.class)
-@RunWith(MockitoJUnitRunner.class)
-//@WebMvcTest(MainPageController.class) //for tests in spring mvc, there's no need to run server
+@RunWith(SpringRunner.class)
+@WebMvcTest(MainPageController.class) //for tests in spring mvc, there's no need to run server
 public class MainPageControllerTest {
 
 	
 	//Main entry point for server-side Spring MVC test support.
-//	@Autowired
-//	private MockMvc mockMvc;
-	
-	@InjectMocks
-	MainPageController mainPageController;
+	@Autowired
+	private MockMvc mockMvc;
 	
 	
-	MockMvc mockMvc;
+//	@MockBean
+//	private MainPageService mainPageService;
+
+	@MockBean
+	//bike elements database methods
+	private BikeElementService bikeElementService;
+	
+	
+	@MockBean
+	//elements categories database methods
+	private CategoriesService categoriesService;
+	
 	
 	@Spy
-	MainPageService mainPageService;
-	
-	@BeforeAll
-	public void setUp() throws Exception {
-	      MockitoAnnotations.initMocks(this);
-	      mockMvc = MockMvcBuilders.standaloneSetup(MainPageController.class)
-	                .build();
-	}
+	private MainPageService mainPageService;
 	
 	
 	//content of page when user is not logged
+	@SuppressWarnings("null")
 	@Test
 	public void mainPageNotLoggedTest() throws Exception{
+		
+		Model model = new  BindingAwareModelMap();
+		model.addAttribute("textOnHref", "Login");
+		model.addAttribute("location", "loginpage");
+		model.addAttribute("textOnButton", "Login to Create Bike");
+		model.addAttribute("btnDisabled", "disabled");
+		
+		when(mainPageService.getModel(Mockito.any(), Mockito.any(HttpServletRequest.class))).thenReturn(model);
 		
 		mockMvc.perform(get("/mainpage"))
 			.andDo(print())
@@ -84,9 +97,17 @@ public class MainPageControllerTest {
 		user.setUsername("John");
 		user.setPassword("Wick");
 		
+		Model model = new  BindingAwareModelMap();
+		model.addAttribute("textOnHref", user.getUsername());
+		model.addAttribute("location", "userpage");
+		model.addAttribute("textOnButton", "Create Bike");
+		
+		when(mainPageService.getModel(Mockito.any(), Mockito.any(HttpServletRequest.class))).thenReturn(model);
+		
+	
 		session.setAttribute("LOGGED_USER", user);
 		
-		mockMvc.perform(get("/mainPage").session(session))
+		mockMvc.perform(get("/mainpage").session(session))
 		.andDo(print())
 		.andExpect(status().isOk()) //http 200 code
 		.andExpect(view().name("mainPage"))

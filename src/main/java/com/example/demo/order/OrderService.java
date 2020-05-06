@@ -72,23 +72,26 @@ public class OrderService {
 		
 		//list of all order submitted by logged user
 		List<Order> listOfOrders = orderRepository.findByUserId(user.getUserId());
-				
-		for(Order order: listOfOrders) {
-					
-			//list of OrderItems objects for particular order
-			List<OrderItems> orderItemsObjects = orderItemsService.getOrderItemsList(order.getOrderId());
-					
-			//list of elements that will be set to order object
-			List<BikeElement> listOfElements = new ArrayList<>();
-					
-			for(OrderItems item: orderItemsObjects) {
+		
+		
+			for(Order order: listOfOrders) {
 						
-				//orderItems object contain elemntId, so those elements must be taken from db using those ids
-				listOfElements.add(bikeElementService.getElement(item.getElementId()));
-			}
-			order.setListOfElements(listOfElements);
+				//list of OrderItems objects for particular order
+				List<OrderItems> orderItemsObjects = orderItemsService.getOrderItemsList(order.getOrderId());
+							
+				//list of elements that will be set to order object
+				List<BikeElement> listOfElements = new ArrayList<>();
+							
+					for(OrderItems item: orderItemsObjects) {
+								
+						//orderItems object contain elemntId, so those elements must be taken from db using those ids
+						listOfElements.add(bikeElementService.getElement(item.getElementId()));
+					}
 					
-		}
+					//sets list of elements for particular object, listOfElements is transient in Order class
+					order.setListOfElements(listOfElements);
+						
+			}
 		
 		return listOfOrders;
 	}

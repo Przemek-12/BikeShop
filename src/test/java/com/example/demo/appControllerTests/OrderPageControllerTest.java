@@ -1,4 +1,4 @@
-package com.example.demo.appController;
+package com.example.demo.appControllerTests;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -19,6 +19,7 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.example.demo.appController.OrderPageController;
 import com.example.demo.entity.BikeElement;
 import com.example.demo.entity.User;
 import com.example.demo.interfaces.Bike;

@@ -1,4 +1,4 @@
-package com.example.demo.appController;
+package com.example.demo.appControllerTests;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -14,11 +14,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.example.demo.appController.RegisterPageController;
 import com.example.demo.entity.User;
+import com.example.demo.user.UserService;
 
 
 @RunWith(SpringRunner.class)
@@ -28,6 +31,8 @@ public class RegisterPageControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 	
+	@MockBean
+	private UserService userService;
 	
 	@Test
 	public void pageLoadTest() throws Exception {
@@ -42,7 +47,6 @@ public class RegisterPageControllerTest {
 	
 
 	@Test
-	@Transactional
 	public void CorrectUserTest() throws Exception {
 		
 		mockMvc.perform(post("/registerPage")
@@ -50,7 +54,6 @@ public class RegisterPageControllerTest {
 			.param("username", "Jimmy")
 			.param("password", "Arrow")
 			.param("email", "Arrow@qw.com")
-			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(redirectedUrl("/loginPage"));
@@ -58,7 +61,6 @@ public class RegisterPageControllerTest {
 	}
 	
 	@Test
-	@Transactional
 	public void UsernameEmailAlreadyTakenTest() throws Exception {
 		
 		mockMvc.perform(post("/registerPage")
@@ -66,7 +68,6 @@ public class RegisterPageControllerTest {
 			.param("username", "John")
 			.param("password", "a")
 			.param("email", "pece@gmail.com")
-			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(status().isOk())
@@ -77,7 +78,6 @@ public class RegisterPageControllerTest {
 	}
 	
 	@Test
-	@Transactional
 	public void UsernameEmailPasswordErrorsTest() throws Exception {
 		
 		mockMvc.perform(post("/loginPage")
@@ -85,7 +85,6 @@ public class RegisterPageControllerTest {
 			.param("username", "a")
 			.param("password", "a")
 			.param("email", "a")
-			//.sessionAttr("loginUser", new User())	
 			)
 			.andDo(print())
 			.andExpect(status().isOk())
