@@ -1,5 +1,6 @@
 package com.example.demo.appControllerTests;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -12,6 +13,7 @@ import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -28,15 +30,17 @@ import com.example.demo.user.UserService;
 @WebMvcTest(RegisterPageController.class)
 public class RegisterPageControllerTest {
 
+	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
 	private UserService userService;
 	
+	
 	@Test
 	public void pageLoadTest() throws Exception {
-		mockMvc.perform(get("/registerPage"))
+		mockMvc.perform(get("/registerpage"))
 		.andDo(print())
 		.andExpect(status().isOk())
 		.andExpect(view().name("registerPage"))
@@ -49,21 +53,24 @@ public class RegisterPageControllerTest {
 	@Test
 	public void CorrectUserTest() throws Exception {
 		
-		mockMvc.perform(post("/registerPage")
+		mockMvc.perform(post("/registerpage")
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "Jimmy")
 			.param("password", "Arrow")
 			.param("email", "Arrow@qw.com")
 			)
 			.andDo(print())
-			.andExpect(redirectedUrl("/loginPage"));
+			.andExpect(redirectedUrl("/loginpage"));
 		
 	}
 	
 	@Test
 	public void UsernameEmailAlreadyTakenTest() throws Exception {
 		
-		mockMvc.perform(post("/registerPage")
+		when(userService.getUserUsername(Mockito.any(String.class))).thenReturn(true);
+		when(userService.getUserEmail(Mockito.any(String.class))).thenReturn(true);
+		
+		mockMvc.perform(post("/registerpage")
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "John")
 			.param("password", "a")
@@ -80,7 +87,7 @@ public class RegisterPageControllerTest {
 	@Test
 	public void UsernameEmailPasswordErrorsTest() throws Exception {
 		
-		mockMvc.perform(post("/loginPage")
+		mockMvc.perform(post("/registerpage")
 			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("username", "a")
 			.param("password", "a")
@@ -88,10 +95,10 @@ public class RegisterPageControllerTest {
 			)
 			.andDo(print())
 			.andExpect(status().isOk())
-			.andExpect(view().name("loginPage"))
-			.andExpect(model().attributeHasFieldErrors("loginUser", "username"))
-            .andExpect(model().attributeHasFieldErrors("loginUser", "password"))
-            .andExpect(model().attributeHasFieldErrors("loginUser", "email"));
+			.andExpect(view().name("registerPage"))
+			.andExpect(model().attributeHasFieldErrors("registerUser", "username"))
+            .andExpect(model().attributeHasFieldErrors("registerUser", "password"))
+            .andExpect(model().attributeHasFieldErrors("registerUser", "email"));
 		
 	}
 	

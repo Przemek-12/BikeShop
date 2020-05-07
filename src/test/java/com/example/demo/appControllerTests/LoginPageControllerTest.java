@@ -27,6 +27,7 @@ import com.example.demo.order.OrderRepository;
 import com.example.demo.orderItems.OrderItemsRepository;
 import com.example.demo.user.UserService;
 
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = LoginPageController.class)
 public class LoginPageControllerTest {
@@ -34,7 +35,6 @@ public class LoginPageControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
-	
 	
 	@MockBean
 	private UserService userService;

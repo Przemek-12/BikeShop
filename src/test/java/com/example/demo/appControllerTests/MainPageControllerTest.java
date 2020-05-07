@@ -23,10 +23,12 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.validation.support.BindingAwareModelMap;
@@ -47,9 +49,9 @@ public class MainPageControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 	
-	
-//	@MockBean
-//	private MainPageService mainPageService;
+	// SpyBean - mock only the methods we want to mock in our test case and leave the others untouched
+	@SpyBean
+	private MainPageService mainPageService;
 
 	@MockBean
 	//bike elements database methods
@@ -61,22 +63,11 @@ public class MainPageControllerTest {
 	private CategoriesService categoriesService;
 	
 	
-	@Spy
-	private MainPageService mainPageService;
-	
 	
 	//content of page when user is not logged
 	@SuppressWarnings("null")
 	@Test
 	public void mainPageNotLoggedTest() throws Exception{
-		
-		Model model = new  BindingAwareModelMap();
-		model.addAttribute("textOnHref", "Login");
-		model.addAttribute("location", "loginpage");
-		model.addAttribute("textOnButton", "Login to Create Bike");
-		model.addAttribute("btnDisabled", "disabled");
-		
-		when(mainPageService.getModel(Mockito.any(), Mockito.any(HttpServletRequest.class))).thenReturn(model);
 		
 		mockMvc.perform(get("/mainpage"))
 			.andDo(print())
@@ -96,14 +87,6 @@ public class MainPageControllerTest {
 		User user = new User();
 		user.setUsername("John");
 		user.setPassword("Wick");
-		
-		Model model = new  BindingAwareModelMap();
-		model.addAttribute("textOnHref", user.getUsername());
-		model.addAttribute("location", "userpage");
-		model.addAttribute("textOnButton", "Create Bike");
-		
-		when(mainPageService.getModel(Mockito.any(), Mockito.any(HttpServletRequest.class))).thenReturn(model);
-		
 	
 		session.setAttribute("LOGGED_USER", user);
 		

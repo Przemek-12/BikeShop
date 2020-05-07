@@ -4,11 +4,14 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -54,15 +57,12 @@ import com.example.demo.services.BikeElementPageService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BikeElementPageController.class)
-//@SpringBootTest
-//@AutoConfigureMockMvc
 public class BikeElementPageControllerTest {
 
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
-	// SpyBean - mock only the methods we want to mock in our test case and leave the others untouched
 	@MockBean
 	private BikeElementPageService bikeElementPageService;
 
@@ -98,25 +98,18 @@ public class BikeElementPageControllerTest {
 		
 		List<String> list = new ArrayList<>(Arrays.asList("frames", "brakes", "derailleurs", "pedals", "wheels", "saddles", "handlebars"));
 		
-		//when(bikeElementService.getList(Mockito.any(Long.class))).thenReturn(new ArrayList<>());
 		
 		list.forEach((item)->{
-			
-			Model model = new  ConcurrentModel();
-			
-			model.addAttribute("elementString", item);
-			
-			when(bikeElementPageService.bikeElementPageGetModel(Mockito.any(String.class),  Mockito.any(), Mockito.any(HttpServletRequest.class))).thenReturn(model);
-			
+
 			try {
+				Model model = new  ConcurrentModel();
 				
-			
-				
+				when(bikeElementPageService.bikeElementPageGetModel(Mockito.any(),  Mockito.any(), Mockito.any())).thenReturn(model);
+		
 				mockMvc.perform(get("/"+item).session(session))
 				.andDo(print())
 				.andExpect(status().isOk()) 
-				.andExpect(view().name("bikeElementPage"))
-				.andExpect(model().attribute("elementString", item));
+				.andExpect(view().name("bikeElementPage"));
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -128,5 +121,36 @@ public class BikeElementPageControllerTest {
 	
 	
 	
+	@Test
+	public void bikeElementPagePostTest() throws Exception {
+		
+		MockHttpSession session = new MockHttpSession();
+		User user = new User();
+		user.setUsername("John");
+		user.setPassword("Wick");
+		
+		when(bikeElementPageService.bikeElementPagePost(Mockito.any(),  Mockito.any(), Mockito.any())).thenReturn("nextCategory");
+		
+		mockMvc.perform(post("/"+"frames").session(session))
+				.andDo(print())
+				.andExpect(view().name("redirect:/nextCategory"));
+		
+		
+		
+		
+	}
+	
+	
+	
 	
 }
+
+
+
+
+
+
+
+
+
+
